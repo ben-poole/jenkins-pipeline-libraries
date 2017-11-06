@@ -4,5 +4,5 @@ def call(mfaArn, totpKey) {
   //code=`oathtool --totp -b ${totpKey}`
 
   echo 'Generating token'
-  sh "aws sts get-session-token --serial-number ${mfaArn} --token-code `oathtool --totp -b ${totpKey}`" 
+  sh "aws sts get-session-token --serial-number ${mfaArn} --token-code `oathtool --totp -b ${totpKey}` || true" 
 }
